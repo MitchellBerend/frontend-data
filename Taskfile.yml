@@ -1,0 +1,32 @@
+version: '3'
+tasks:
+  build:
+    silent: true
+    cmds:
+      - printf "Building...\n"
+      - go build -o frontend-data cmd/api/main.go
+      - printf "Build frontend-data...\n"
+    generates:
+      - frontend-data
+
+
+  run:
+    silent: true
+    cmds:
+      - printf "Running...\n"
+      - cmd: go run cmd/api/main.go
+        ignore_error: true
+
+
+  test:
+    silent: true
+    cmds:
+      - printf "Testing...\n"
+      - go test ./tests -v
+
+
+  clean:
+    silent: true
+    cmds:
+      - printf "Cleaning...\n"
+      - rm -f main
