@@ -33,5 +33,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          platform: ${{ matrix.arch }}
+          platforms: ${{ matrix.arch }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE }}:${{ matrix.arch }}-${{ github.ref_name }}
