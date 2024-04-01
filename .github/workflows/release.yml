@@ -13,6 +13,9 @@ permissions:
 
 jobs:
   docker-build:
+    strategy:
+      matrix:
+        arch: [linux/amd64, linux/arm64, darwin/amd64]
     runs-on: ubuntu-latest
     steps:
       # This step is not required
@@ -30,4 +33,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE }}:${{ github.ref_name }}
+          platform: ${{ matrix.arch }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE }}:${{ matrix.arch }}-${{ github.ref_name }}
