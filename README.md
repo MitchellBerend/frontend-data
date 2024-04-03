@@ -7,7 +7,6 @@ Secrets
 
 DOCKERHUB_USERNAME
 DOCKERHUB_TOKEN
-DOCKERHUB_USERNAME
 
 Environment variables
 
